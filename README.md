@@ -16,12 +16,15 @@
 
 - 헤더: `Frontend Developer` 라벨 + 헤드라인
 - **채팅형 히어로**: 채용담당자 질문 말풍선 → AI 답변 타이핑 애니메이션 → 기술 스택 태그 페이드인
-- **프로젝트 목록**: 회사별 섹션 + 카드 리스트
+- **프로젝트 목록**: 회사별 섹션 + 카드 리스트 (썸네일 16:9)
 - **경력 타임라인**
 
 ### 프로젝트 상세 (`/projects/[slug]`)
 
 - 프로젝트 개요, 스크린샷, 담당 역할, 주요 구현 내용, 트러블슈팅
+- 스크린샷은 `images` 배열만 표시 (썸네일은 목록 카드 전용)
+- 모바일 WebApp 등 세로 스크린샷은 `imageOrientation: "portrait"`로 2열 가로 배치
+- 트러블슈팅 카드: 문제/해결 라벨을 색상 pill badge로 구분
 
 ## 프로젝트 구조
 
@@ -38,11 +41,11 @@ src/
 │   ├── ProjectCard.tsx     # 프로젝트 카드
 │   └── CareerTimeline.tsx  # 경력 타임라인
 └── data/
-    ├── projects.ts         # 프로젝트 데이터 (7개)
+    ├── projects.ts         # 프로젝트 데이터 (6개)
     └── site.ts             # 자기소개 텍스트, 기술 스택, 경력
 
 public/
-└── images/projects/        # 프로젝트 썸네일·스크린샷 (SVG)
+└── images/projects/        # 프로젝트 썸네일·스크린샷 (PNG)
 ```
 
 ## 시작하기
@@ -92,12 +95,26 @@ npm run lint
   role: "담당 역할",
   achievements: ["주요 구현 1", "주요 구현 2"],
   troubleshooting: [{ problem: "...", solution: "..." }],
-  thumbnail: "/images/projects/xxx-thumb.svg",
-  images: ["/images/projects/xxx-1.svg"],
+  thumbnail: "/images/projects/xxx-thumb.png",  // 목록 카드용
+  images: [                                     // 상세 페이지 스크린샷
+    "/images/projects/xxx-1.png",
+    "/images/projects/xxx-2.png",
+  ],
+  imageOrientation: "portrait",                 // 선택: 모바일 WebApp 등 세로 스크린샷
 }
 ```
 
-썸네일·스크린샷은 `public/images/projects/`에 추가하고, SVG 사용 시 `&`는 `&amp;`로 이스케이프해야 합니다.
+### 이미지 파일 규칙
+
+| 용도 | 파일명 패턴 | 예시 |
+|------|-------------|------|
+| 목록 썸네일 | `{이름}-thumb.png` | `ai-search-thumb.png` |
+| 상세 스크린샷 | `{이름}-1.png`, `-2.png` … | `ai-search-1.png` |
+
+- 저장 경로: `public/images/projects/`
+- 코드 경로: `/images/projects/파일명.png`
+- 권장 비율: 가로 16:9 (모바일 WebApp은 세로 원본 + `imageOrientation: "portrait"`)
+- LGU+처럼 세로 스크린 2장을 합친 가로 썸네일(`lgu-mobile-manager-thumb.png`)도 사용 가능
 
 ### 자기소개·경력·기술 스택
 
@@ -125,3 +142,4 @@ npm run lint
 | 카드 border      | 0.5px, radius 12px           |
 | 강조 컬러        | `#4F46E5` (라벨·태그 텍스트) |
 | 태그 배경        | `#EEF2FF`                    |
+| 트러블슈팅 라벨  | 문제: orange pill / 해결: green pill |

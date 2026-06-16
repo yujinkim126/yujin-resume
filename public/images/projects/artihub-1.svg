@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
-  <rect width="800" height="450" fill="#f9fafb"/>
-  <rect x="40" y="40" width="200" height="370" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <rect x="260" y="40" width="500" height="80" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <rect x="260" y="140" width="240" height="120" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <rect x="520" y="140" width="240" height="120" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
-  <text x="400" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#9ca3af">Dashboard</text>
-</svg>
