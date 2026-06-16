@@ -12,7 +12,7 @@ export default function HomePage() {
       <header className="mb-12">
         <p className="mb-3 font-en text-sm text-[#4F46E5]">Frontend Developer</p>
         <h1 className="text-2xl text-text-primary sm:text-3xl">
-          요구사항을 화면으로 구체화하는
+        AI 서비스를 화면으로 구현해내는
           <br />
           프론트엔드 개발자
         </h1>

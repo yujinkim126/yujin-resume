@@ -31,6 +31,8 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     notFound();
   }
 
+  const isPortrait = project.imageOrientation === "portrait";
+
   return (
     <main className="mx-auto min-h-screen max-w-3xl px-5 py-16 sm:px-8">
       <Link
@@ -62,19 +64,33 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
       <section className="mb-10">
         <h2 className="mb-4 text-base text-text-primary">스크린샷</h2>
-        <div className="flex flex-col gap-4">
+        <div
+          className={
+            isPortrait
+              ? "grid grid-cols-2 gap-4"
+              : "flex flex-col gap-4"
+          }
+        >
           {project.images.map((image, index) => (
             <div
-              key={image}
-              className="relative aspect-[16/9] overflow-hidden rounded-xl card-border bg-surface-muted"
+              key={`${image}-${index}`}
+              className={`relative overflow-hidden rounded-xl card-border bg-surface-muted ${
+                isPortrait
+                  ? "aspect-[9/16] w-full"
+                  : "aspect-[16/9] w-full"
+              }`}
             >
               <Image
                 src={image}
                 alt={`${project.title} 스크린샷 ${index + 1}`}
                 fill
                 unoptimized
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 768px"
+                className={isPortrait ? "object-contain" : "object-cover"}
+                sizes={
+                  isPortrait
+                    ? "(max-width: 768px) 50vw, 384px"
+                    : "(max-width: 768px) 100vw, 768px"
+                }
               />
             </div>
           ))}
@@ -103,13 +119,13 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
               key={item.problem}
               className="rounded-xl card-border p-5"
             >
-              <p className="mb-2 text-sm font-medium text-text-primary">
+              <span className="mb-2 inline-flex rounded-full bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-600">
                 문제
-              </p>
+              </span>
               <p className="mb-4 text-sm text-text-secondary">{item.problem}</p>
-              <p className="mb-2 text-sm font-medium text-text-primary">
+              <span className="mb-2 inline-flex rounded-full bg-green-50 px-2.5 py-1 text-xs font-medium text-green-600">
                 해결
-              </p>
+              </span>
               <p className="text-sm text-text-secondary">{item.solution}</p>
             </div>
           ))}
