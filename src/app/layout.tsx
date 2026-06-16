@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   title: "김유진 | Frontend Developer",
   description:
     "요구사항을 화면으로 구체화하는 프론트엔드 개발자 포트폴리오",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
 };
 
 export default function RootLayout({
