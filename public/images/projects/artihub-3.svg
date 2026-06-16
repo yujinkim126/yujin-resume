@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#f9fafb"/>
+  <rect x="60" y="60" width="680" height="40" rx="4" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="60" y="120" width="680" height="240" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="100" y1="280" x2="700" y2="280" stroke="#e5e7eb" stroke-width="1"/>
+  <line x1="100" y1="240" x2="100" y2="280" stroke="#e5e7eb" stroke-width="1"/>
+  <polyline points="120,260 200,220 280,240 360,180 440,200 520,160 600,190 680,150" fill="none" stroke="#9ca3af" stroke-width="2"/>
+  <text x="400" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#9ca3af">Admin Panel</text>
+</svg>

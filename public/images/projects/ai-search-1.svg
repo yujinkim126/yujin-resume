@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#f9fafb"/>
+  <rect x="60" y="60" width="500" height="30" rx="4" fill="#e5e7eb"/>
+  <rect x="60" y="110" width="680" height="12" rx="2" fill="#e5e7eb"/>
+  <rect x="60" y="134" width="620" height="12" rx="2" fill="#e5e7eb"/>
+  <rect x="60" y="158" width="580" height="12" rx="2" fill="#e5e7eb"/>
+  <rect x="60" y="200" width="680" height="180" rx="8" fill="#ffffff" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="400" y="400" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#9ca3af">Search Interface</text>
+</svg>
