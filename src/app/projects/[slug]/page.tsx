@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getAllProjectSlugs, getProjectBySlug } from "@/data/projects";
+import ProjectImageGallery from "@/components/ProjectImageGallery";
 
 interface ProjectDetailPageProps {
   params: { slug: string };
@@ -34,7 +34,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
   const isPortrait = project.imageOrientation === "portrait";
 
   return (
-    <main className="mx-auto min-h-screen max-w-3xl px-5 py-16 sm:px-8">
+    <main className="mx-auto min-h-screen max-w-5xl px-5 py-16 sm:px-8">
       <Link
         href="/"
         className="mb-10 inline-flex items-center gap-1 text-sm text-text-muted transition-colors hover:text-text-secondary"
@@ -59,42 +59,16 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
       <section className="mb-10">
         <h2 className="mb-3 text-base text-text-primary">개요</h2>
-        <p className="text-text-secondary">{project.summary}</p>
+        <p className="whitespace-pre-line text-text-secondary">{project.summary}</p>
       </section>
 
       <section className="mb-10">
         <h2 className="mb-4 text-base text-text-primary">스크린샷</h2>
-        <div
-          className={
-            isPortrait
-              ? "grid grid-cols-2 gap-4"
-              : "flex flex-col gap-4"
-          }
-        >
-          {project.images.map((image, index) => (
-            <div
-              key={`${image}-${index}`}
-              className={`relative overflow-hidden rounded-xl card-border bg-surface-muted ${
-                isPortrait
-                  ? "aspect-[9/16] w-full"
-                  : "aspect-[16/9] w-full"
-              }`}
-            >
-              <Image
-                src={image}
-                alt={`${project.title} 스크린샷 ${index + 1}`}
-                fill
-                unoptimized
-                className={isPortrait ? "object-contain" : "object-cover"}
-                sizes={
-                  isPortrait
-                    ? "(max-width: 768px) 50vw, 384px"
-                    : "(max-width: 768px) 100vw, 768px"
-                }
-              />
-            </div>
-          ))}
-        </div>
+        <ProjectImageGallery
+          title={project.title}
+          images={project.images}
+          isPortrait={isPortrait}
+        />
       </section>
 
       <section className="mb-10">
@@ -115,10 +89,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         <h2 className="mb-4 text-base text-text-primary">트러블슈팅</h2>
         <div className="flex flex-col gap-5">
           {project.troubleshooting.map((item) => (
-            <div
-              key={item.problem}
-              className="rounded-xl card-border p-5"
-            >
+            <div key={item.problem} className="rounded-xl card-border p-5">
               <span className="mb-2 inline-flex rounded-full bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-600">
                 문제
               </span>

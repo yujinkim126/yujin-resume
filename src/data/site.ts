@@ -18,8 +18,7 @@ export const careers: CareerItem[] = [
 ];
 
 export const INTRO_TEXT =
-  "React, TypeScript, Next.js 기반으로 Semantic Search 서비스와 B2B 운영 플랫폼을 개발해 온 4년차 프론트엔드 개발자입니다.\n채팅형 검색 UI, 스트리밍 응답, 권한별 접근 제어, 상태별 화면 분기처럼 복잡한 화면 흐름을 사용자가 이해하기 쉬운 구조로 정리하고, HTML 프로토타입부터 실제 서비스 UI까지 구현하는 데 강점이 있습니다.";
-  
+  "React, TypeScript, Next.js를 중심으로 B2B 운영 플랫폼, AI 검색 서비스, WebView 서비스를 개발해 온 4년차 프론트엔드 개발자입니다.\n서비스 기획과 화면·사용자 흐름 설계부터 실제 구현과 운영까지 경험하며 복잡한 요구사항을 명확한 UI와 상태 흐름으로 만드는 데 강점이 있습니다.";
 export const TECH_STACK = [
   "React",
   "Next.js",
