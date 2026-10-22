@@ -14,38 +14,34 @@
 
 ### 메인 페이지 (`/`)
 
-- 헤더: `Frontend Developer` 라벨 + 헤드라인
-- **채팅형 히어로**: 채용담당자 질문 말풍선 → AI 답변 타이핑 애니메이션 → 기술 스택 태그 페이드인
-- **프로젝트 목록**: 회사별 섹션 + 카드 리스트 (썸네일 16:9)
-- **경력 타임라인**
+- 헤더: 이름, 한 줄 소개, 연락처
+- **대표 케이스** (`featured: true`): 왼쪽에 핵심 지표 3개와 문제 → 결정 → 결과, 오른쪽에 화면 캡처. 캡처가 없으면 `flow`를 흐름도로 표시
+- **그 밖의 프로젝트**: 카드 목록 + 기타 작업(`otherWorks`)
+- 경력과 기술
 
 ### 프로젝트 상세 (`/projects/[slug]`)
 
-- 프로젝트 개요, 스크린샷, 담당 역할, 주요 구현 내용, 트러블슈팅
-- 스크린샷은 `images` 배열만 표시 (썸네일은 목록 카드 전용)
-- 모바일 WebApp 등 세로 스크린샷은 `imageOrientation: "portrait"`로 2열 가로 배치
-- 트러블슈팅 카드: 문제/해결 라벨을 색상 pill badge로 구분
+- 개요, 지표, 담당 역할·기술, 화면(또는 흐름도)
+- **문제 해결과 결정**: 문제 / 결정 / 이유 / 결과
+- 주요 구현 내용, 다음 프로젝트 링크
 
 ## 프로젝트 구조
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # 루트 레이아웃, 폰트 CDN
-│   ├── page.tsx            # 메인 페이지
-│   ├── globals.css         # 전역 스타일
-│   └── projects/[slug]/
-│       └── page.tsx        # 프로젝트 상세 (동적 라우팅)
+│   ├── layout.tsx              # 루트 레이아웃, Pretendard 폰트
+│   ├── page.tsx                # 메인 페이지
+│   ├── globals.css
+│   └── projects/[slug]/page.tsx  # 프로젝트 상세
 ├── components/
-│   ├── ChatHero.tsx        # 채팅형 히어로 + 타이핑 애니메이션
-│   ├── ProjectCard.tsx     # 프로젝트 카드
-│   └── CareerTimeline.tsx  # 경력 타임라인
+│   ├── FeaturedCase.tsx        # 대표 케이스 행
+│   ├── OtherProjectCard.tsx    # 그 밖의 프로젝트 카드
+│   ├── CaseParts.tsx           # 지표, 문제/결정/결과, 흐름도
+│   └── ProjectImageGallery.tsx # 스크린샷 + 확대 보기
 └── data/
-    ├── projects.ts         # 프로젝트 데이터 (6개)
-    └── site.ts             # 자기소개 텍스트, 기술 스택, 경력
-
-public/
-└── images/projects/        # 프로젝트 썸네일·스크린샷 (PNG)
+    ├── projects.ts             # 프로젝트 데이터
+    └── site.ts                 # 프로필, 경력, 기술
 ```
 
 ## 시작하기
@@ -81,28 +77,7 @@ npm run lint
 
 ### 프로젝트 추가·수정
 
-`src/data/projects.ts`에서 배열을 편집합니다.
-
-```ts
-{
-  slug: "project-slug",       // URL: /projects/project-slug
-  title: "프로젝트명",
-  company: "회사명",
-  companyPeriod: "2024.11 – 현재",
-  period: "2026.01 – 2026.06",
-  stack: ["Next.js", "TypeScript"],
-  summary: "한두 줄 개요",
-  role: "담당 역할",
-  achievements: ["주요 구현 1", "주요 구현 2"],
-  troubleshooting: [{ problem: "...", solution: "..." }],
-  thumbnail: "/images/projects/xxx-thumb.png",  // 목록 카드용
-  images: [                                     // 상세 페이지 스크린샷
-    "/images/projects/xxx-1.png",
-    "/images/projects/xxx-2.png",
-  ],
-  imageOrientation: "portrait",                 // 선택: 모바일 WebApp 등 세로 스크린샷
-}
-```
+`src/data/projects.ts`의 `Project` 타입을 참고합니다. `featured: true`인 프로젝트가 메인 대표 케이스로 나오고, `stories`가 상세 페이지의 "문제 해결과 결정"이 됩니다.
 
 ### 이미지 파일 규칙
 

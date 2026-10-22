@@ -51,27 +51,31 @@ export default function ProjectImageGallery({
             key={`${image}-${index}`}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={`group relative overflow-hidden rounded-xl card-border bg-surface-muted text-left transition-opacity hover:opacity-95 ${
-              isPortrait ? "aspect-[9/16] w-full" : "aspect-[16/9] w-full"
+            className={`group relative w-full overflow-hidden rounded-xl border border-border bg-surface-muted text-left transition-opacity hover:opacity-95 ${
+              isPortrait ? "aspect-[9/16]" : ""
             }`}
             aria-label={`${title} 스크린샷 ${index + 1} 확대`}
           >
-            <Image
-              src={image}
-              alt={`${title} 스크린샷 ${index + 1}`}
-              fill
-              unoptimized
-              className={
-                isPortrait
-                  ? "object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                  : "object-cover transition-transform duration-300 group-hover:scale-[1.01]"
-              }
-              sizes={
-                isPortrait
-                  ? "(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 360px"
-                  : "(max-width: 768px) 100vw, 1024px"
-              }
-            />
+            {isPortrait ? (
+              <Image
+                src={image}
+                alt={`${title} 스크린샷 ${index + 1}`}
+                fill
+                unoptimized
+                className="object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 360px"
+              />
+            ) : (
+              <Image
+                src={image}
+                alt={`${title} 스크린샷 ${index + 1}`}
+                width={0}
+                height={0}
+                unoptimized
+                className="block h-auto w-full transition-transform duration-300 group-hover:scale-[1.01]"
+                sizes="(max-width: 768px) 100vw, 880px"
+              />
+            )}
           </button>
         ))}
       </div>

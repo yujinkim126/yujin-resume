@@ -15,12 +15,19 @@ const config: Config = {
           hover: "#f3f4f6",
         },
         text: {
-          primary: "#111827",
-          secondary: "#4b5563",
-          muted: "#9ca3af",
+          primary: "#121417",
+          body: "#1f2937",
+          secondary: "#374151",
+          muted: "#6b7280",
         },
         border: {
           DEFAULT: "#e5e7eb",
+          strong: "#c9cdd3",
+        },
+        accent: {
+          DEFAULT: "#0f766e",
+          dark: "#115e59",
+          soft: "#f0fdfa",
         },
       },
       fontFamily: {
@@ -34,14 +41,9 @@ const config: Config = {
           "Arial",
           "sans-serif",
         ],
-        en: [
-          "Inter",
-          "Pretendard",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "system-ui",
-          "sans-serif",
-        ],
+      },
+      maxWidth: {
+        page: "1160px",
       },
     },
   },
