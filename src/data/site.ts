@@ -17,7 +17,7 @@ export const careers: CareerItem[] = [
   {
     company: "아티언스",
     role: "프론트엔드 개발자",
-    period: "2024.11 – 현재",
+    period: "2024.10 – 현재",
   },
   {
     company: "파인원 커뮤니케이션즈",
